@@ -1,0 +1,24 @@
+services:
+  app:
+    image: infracloudio/csvserver
+    container_name: csvserver_container
+    ports:
+    - 9393:9300
+    volumes:
+    - type: bind
+      source: "/Users/suraj/Documents/Project1/csvserver/solution/inputFile"
+      target: "/csvserver/inputdata"
+    environment:
+      CSVSERVER_BORDER: 'Orange'
+
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus_container
+    ports:
+    - 9090:9090
+    volumes:
+    - type: bind
+      source: "/Users/suraj/Documents/Project1/csvserver/solution/prometheus.yml"
+      target: "/etc/prometheus/prometheus.yml"
+    command:
+    - '--config.file=/etc/prometheus/prometheus.yml'

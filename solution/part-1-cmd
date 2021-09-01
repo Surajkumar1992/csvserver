@@ -1,0 +1,12 @@
+docker compose up
+
+# stop the docker to add the
+docker stop containername
+docker rm containername
+
+# Added prometheus.yml and modified docker-compose.yml to read metrics.
+# Create prometheus service
+docker create service csv-prometheus
+
+#Docker Create application container
+docker compose up
